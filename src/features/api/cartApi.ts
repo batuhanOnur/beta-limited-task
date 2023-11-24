@@ -6,8 +6,8 @@ export const cartApi = createApi({
     reducerPath: 'cartApi',
     baseQuery: fetchBaseQuery({
         baseUrl: `${import.meta.env.VITE_PRODUCTION_URL}`,
-        prepareHeaders(headers) {
-            headers.set('Session-ID',"n8ams6xkk")
+        prepareHeaders(headers,{ getState }: any) {
+            headers.set('Session-ID',getState().session.sessionId)
             return headers;
         },
     }),
@@ -33,6 +33,6 @@ export const cartApi = createApi({
 })
 
 export const { 
-    useGetCartProductsQuery,
+    useLazyGetCartProductsQuery,
     useAddProductToCartMutation
 } = cartApi;

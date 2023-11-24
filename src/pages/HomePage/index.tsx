@@ -1,11 +1,14 @@
-import { Alert, Typography } from "@mui/material"
+import { Alert, Skeleton, Typography } from "@mui/material"
 import { useGetProductsQuery } from "../../features/api/productsApi"
 import ProductList from "../../components/Products/ProductList"
+import { useSelector } from "react-redux"
+import { RootState } from "../../store/store"
 
 
 const HomePage = () => {
 
   const productQuery = useGetProductsQuery(null)
+  const searchedData = useSelector((state:RootState) => state.search.searchData);
 
   return (
     <>
@@ -16,8 +19,13 @@ const HomePage = () => {
       {
         productQuery.isSuccess && (
           <ProductList
-            productList={productQuery.data} 
+            productList={Array.isArray(searchedData) ? searchedData.length > 0 ? searchedData : productQuery.data : productQuery.data} 
           />
+        )
+      }
+      {
+        productQuery.isLoading && (
+          <Skeleton variant="rectangular" width={210} height={118} />
         )
       }
 

@@ -34,14 +34,15 @@ const ProductCard:React.FC<Props> = (props) => {
   return (
 
     <Card 
-    sx={{ maxWidth: 345 }} 
+    sx={{ minWidth: 300, maxWidth: 350 }} 
     onMouseOver={ () => setShowButtonGroup(true)}
     onMouseLeave={ () => setShowButtonGroup(false)}
     >
       <Box sx={{ position: 'relative'}}>
+        
         <CardMedia
           component="img"
-          height="194"
+          height="350"
           image={props.product.image}
           alt={props.product.name}
           sx={{ 
@@ -62,23 +63,25 @@ const ProductCard:React.FC<Props> = (props) => {
         />
         {
           showButtonGroup && 
-          <ButtonGroup 
-          variant="outlined"
-          disableElevation 
-          sx={{ position: 'absolute', bottom: 5, left: 100, backgroundColor: '#ffff' }}
-          >
-              <IconButton>
-                <VisibilityIcon />
-              </IconButton>
+          <Box sx={{ display: 'flex', justifyContent: 'center', position: 'absolute', bottom: 5, width: '100%' }}>
+            <ButtonGroup 
+            variant="outlined"
+            disableElevation 
+            sx={{ backgroundColor: '#ffff' }}
+            >
+                <IconButton>
+                  <VisibilityIcon />
+                </IconButton>
 
-              <IconButton>
-                <FavoriteBorderIcon />
-              </IconButton>
+                <IconButton>
+                  <FavoriteBorderIcon />
+                </IconButton>
 
-              <IconButton onClick={addShoppingCart}>
-                <ShoppingCartIcon />
-              </IconButton>
-          </ButtonGroup>
+                <IconButton onClick={addShoppingCart}>
+                  <ShoppingCartIcon />
+                </IconButton>
+            </ButtonGroup>
+          </Box>
         }
         
       </Box>

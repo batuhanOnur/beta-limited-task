@@ -6,8 +6,8 @@ export const productsApi = createApi({
     reducerPath: 'productsApi',
     baseQuery: fetchBaseQuery({
         baseUrl: `${import.meta.env.VITE_PRODUCTION_URL}`,
-        prepareHeaders(headers) {
-            headers.set('Session-ID',"n8ams6xkk")
+        prepareHeaders(headers, { getState }: any) {
+            headers.set('Session-ID',getState().session.sessionId)
             return headers;
         },
     }),
@@ -22,9 +22,16 @@ export const productsApi = createApi({
             }),
             providesTags: ['Products']
         }),
+        searchProduct: builder.mutation<IProduct[],string>({
+            query: (name) => ({
+                url: `search?name=${name}`,
+                method: 'POST'
+            }),
+        })
     })
 })
 
-export const { 
-    useGetProductsQuery
+export const {
+    useGetProductsQuery,
+    useSearchProductMutation
 } = productsApi;
