@@ -32,9 +32,9 @@ const ProductCard:React.FC<Props> = (props) => {
   }
 
   return (
-
+    
     <Card 
-    sx={{ minWidth: 300, maxWidth: 350 }} 
+    sx={{ width: 300 }} 
     onMouseOver={ () => setShowButtonGroup(true)}
     onMouseLeave={ () => setShowButtonGroup(false)}
     >

@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid"
 import { IProduct } from "../../interfaces/ProductInterface"
 import ProductCard from "./ProductCard"
-import { Skeleton } from "@mui/material"
+import { Box, Skeleton } from "@mui/material"
 
 type Props = {
     productList: IProduct[]
@@ -10,23 +10,22 @@ type Props = {
 const ProductList:React.FC<Props> = (props) => {
 
   return (
-    <Grid container spacing={2}>
+    <Box sx={{ flexGrow: 1, width: '100%' }}>
+        <Grid container spacing={12}>
         {
             props.productList.map((product:IProduct) => {
                 return (
-                    <Grid key={product.id} item xs={12} md={6} lg={4}>
-                        {
-                            product.image ? 
-                            <ProductCard product={product}/>
-                            : 
-                            <Skeleton variant="rectangular" width={345} height={194} />
-                        }
-                        
+                    product.image ? 
+                    <Grid item xs={6} md={8} lg={props.productList.length > 2 ? 4 : 6}>
+                        <ProductCard product={product}/>
                     </Grid>
+                    : 
+                    <Skeleton variant="rectangular" width={345} height={194} />
                 )
             })
-        }
-    </Grid>
+        }                      
+        </Grid>
+    </Box>
   )
 }
 
