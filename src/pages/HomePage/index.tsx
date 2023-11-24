@@ -1,14 +1,13 @@
 import { Alert, Skeleton, Typography } from "@mui/material"
 import { useGetProductsQuery } from "../../features/api/productsApi"
 import ProductList from "../../components/Products/ProductList"
-import { useSelector } from "react-redux"
-import { RootState } from "../../store/store"
+import useSearchedData from "../../hooks/useSearchedData"
 
 
 const HomePage = () => {
 
   const productQuery = useGetProductsQuery(null)
-  const searchedData = useSelector((state:RootState) => state.search.searchData);
+  const searchedData = useSearchedData()
 
   return (
     <>
