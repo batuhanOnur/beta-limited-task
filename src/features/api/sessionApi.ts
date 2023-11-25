@@ -16,6 +16,10 @@ export const sessionApi = createApi({
             query:() => ({
                 url:'/createsession',
                 method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
                 responseHandler: (response) => response.text(),
             })
         }),
