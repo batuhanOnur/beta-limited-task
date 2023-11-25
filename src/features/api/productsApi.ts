@@ -5,7 +5,7 @@ import { IProduct } from '../../interfaces/ProductInterface';
 export const productsApi = createApi({
     reducerPath: 'productsApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${import.meta.env.VITE_PRODUCTION_URL}`,
+        baseUrl: `https://linkedin-cv-crawler.beta-limited.workers.dev/interview`,
         prepareHeaders(headers, { getState }: any) {
             headers.set('Session-ID',getState().session.sessionId)
             return headers;
