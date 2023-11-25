@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <>
       <Typography variant="h4" gutterBottom sx={{ color: 'black'}}>
-        Pears, apples, quincessss
+        Pears, apples, quinces
       </Typography>
 
       {
