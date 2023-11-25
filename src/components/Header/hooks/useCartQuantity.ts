@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 
 const useCartQuantity = () => {
-     
+    
     const sessionId = useSessionId()
     const [cartQuery,result] = useLazyGetCartProductsQuery()
     
