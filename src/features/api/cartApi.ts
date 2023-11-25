@@ -15,7 +15,7 @@ export const cartApi = createApi({
     tagTypes:['Cart'],
 
     endpoints:(builder) => ({
-        getCartProducts: builder.query<ICart[],null>({
+        getCartProducts: builder.query<ICart[],any>({
             query:() => ({
                 url:'/view-cart',
                 method: 'GET',
