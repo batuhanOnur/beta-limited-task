@@ -19,6 +19,7 @@ export const sessionApi = createApi({
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
+                    "Cache-Control":"no-cache, no-store, max-age=0, must-revalidate"
                 },
                 responseHandler: (response) => response.text(),
             })
